@@ -292,6 +292,8 @@ func outputTrustedCerts(out *os.File, objects []*Object) {
 			label = unescapeLabel(label)
 			label = strings.Replace(label, " ", "_", -1)
 			label = strings.Replace(label, "/", "_", -1)
+			label = strings.Replace(label, "(", "_", -1) //amba build script can't deal with ( ) in filenames
+			label = strings.Replace(label, ")", "_", -1)
 
 			filename := label
 			for i := 2; ; i++ {
